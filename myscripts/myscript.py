@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 def main():
-    print("welcome to devnet !")
+    print("no i ddn mean to do that  !")
 
 if __name__ == "__main__":
     main()

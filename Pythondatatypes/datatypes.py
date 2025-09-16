@@ -155,3 +155,16 @@ finally:
 
 #methods and functions
 
+my_new_string = "Hello World"
+my_new_int = 10
+
+print(my_new_string + " " + str(my_new_int))
+
+my_unsorted_list = [5, 3, 1, 4, 2]
+XX = (sorted(my_unsorted_list))
+print(XX)
+
+def my_first_function(name: str) -> str:
+    """This is my first function"""
+    return f"Hello {name}"
+print(my_first_function("John"))

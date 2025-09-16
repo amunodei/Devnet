@@ -134,8 +134,9 @@ match code:
     case 300:
         print("Unknown Error")
 
-
-for car in favorite_cars:
+favorite_cars[0] = None
+try:
+ for car in favorite_cars:
     if car == "John":
         print(f"John's favorite car is {favorite_cars[car]}") 
         break
@@ -144,3 +145,13 @@ for car in favorite_cars:
         continue      
     else:
         print(f"'s favorite car is ")
+except TypeError as e:
+    print(f"Error: {e}")
+else:   
+    print("No errors occurred")
+finally:
+    print("Execution completed")
+
+
+#methods and functions
+

@@ -1,0 +1,31 @@
+{
+    "router": {
+        "hostname": "R1",
+        "model": "Cisco ISR 4451",
+        "os_version": "IOS XE 17.9",
+        "location": "Data Center 1",
+        "interfaces": [
+            {
+                "name": "GigabitEthernet0/0",
+                "ip_address": "192.168.1.1",
+                "subnet_mask": "255.255.255.0",
+                "status": "up",
+                "description": "LAN Interface"
+            },
+            {
+                "name": "GigabitEthernet0/1",
+                "ip_address": "10.0.0.1",
+                "subnet_mask": "255.255.255.252",
+                "status": "up",
+                "description": "WAN Interface"
+            },
+            {
+                "name": "Loopback0",
+                "ip_address": "1.1.1.1",
+                "subnet_mask": "255.255.255.255",
+                "status": "up",
+                "description": "Loopback Interface"
+            }
+        ]
+    }
+}

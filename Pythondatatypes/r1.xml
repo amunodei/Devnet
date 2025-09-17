@@ -1,0 +1,15 @@
+<router>
+    <hostname>Router1</hostname>
+    <interfaces>
+        <interface>
+            <name>GigabitEthernet0/0</name>
+            <ip-address>192.168.1.1</ip-address>
+            <subnet-mask>255.255.255.0</subnet-mask>
+        </interface>
+        <interface>
+            <name>GigabitEthernet0/1</name>
+            <ip-address>10.0.0.1</ip-address>
+            <subnet-mask>255.255.255.0</subnet-mask>
+        </interface>
+    </interfaces>
+</router>

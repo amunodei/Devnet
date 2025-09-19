@@ -1,5 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 from classes.mycar import Car
+from functools import wraps
+
 
 app = Flask(__name__)
 @app.route('/api', methods=['GET'])
@@ -21,7 +23,43 @@ def create_car():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
+
+###
+#auth logic 
+###
+
+VALID_USERNAME = 'admin'
+VALID_PASSWORD = 'password'
+
+def check_auth(username, password):
+    return username == VALID_USERNAME and password == VALID_PASSWORD
+
+def authenticate():
+    return Response(
+        'Could not verify your access level for that URL.\n'
+        'You have to login with proper credentials', 401,
+        {'WWW-Authenticate': 'Basic realm="Login Required"'})
+
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if not auth or not check_auth(auth.username, auth.password):
+            return authenticate()
+        return f(*args, **kwargs)
+    return decorated
+
+@app.route('/protected')
+@requires_auth  
+def protected():
+    return jsonify({"You have accessed a protected resource"})
+
+
+###
+#stop auth logic
+###
+
 
 
 if __name__ == '__main__':

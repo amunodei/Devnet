@@ -1,4 +1,9 @@
-csr#conf t
+en
+
+conf t 
+
+hostname CSR1
+
 
 ip domain name devnet.com
 crypto key gen rsa mod 2048
@@ -7,4 +12,5 @@ login local
 transport input ssh
 exit
 username admin priv 15 secret password admin
+
 netconf-yang

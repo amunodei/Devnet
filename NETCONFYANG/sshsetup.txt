@@ -1,0 +1,10 @@
+csr#conf t
+
+ip domain name devnet.com
+crypto key gen rsa mod 2048
+line vty 0 4
+login local
+transport input ssh
+exit
+username admin priv 15 secret password admin
+netconf-yang

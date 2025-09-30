@@ -15,3 +15,41 @@ exit
 username admin priv 15 secret password admin
 
 netconf-yang
+
+on ubuntu devbox host add the below 
+
+/etc/ssh/ssh_config
+#Legacy changes
+KexAlgorithms +diffie-hellman-group1-sha1
+Ciphers +aes128-cbc
+
+#Legacy changes
+KexAlgorithms diffie-hellman-group1-sha1,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1
+Ciphers 3des-cbc,blowfish-cbc,aes128-cbc,aes128-ctr,aes256-ctr
+
+KexAlgorithms diffie-hellman-group1-sha1,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1
+Ciphers 3des-cbc,blowfish-cbc,aes128-cbc,aes128-ctr,aes256-ctr
+
+-------------------
+vim ~/.ssh/config and adding:
+
+Host *
+    KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
+
+problem02:
+
+“no matching host key type found. their offer: ssh-rsa”
+solution02:
+
+vim ~/.ssh/config and adding:
+
+Host * 
+    PubkeyAcceptedAlgorithms +ssh-rsa 
+    HostKeyAlgorithms +ssh-rsa 
+
+
+
+
+for it to work 
+
+https://unix.stackexchange.com/questions/340844/how-to-enable-diffie-hellman-group1-sha1-key-exchange-on-debian-8-0/340853

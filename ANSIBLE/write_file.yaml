@@ -1,0 +1,14 @@
+---
+- name: Create a unique text file on each host
+  hosts: ubuntusrv
+  become: false # adjust to true if you need sudo for home dir write
+  vars:
+    filename: welcome.txt
+
+  tasks:
+    - name: Write unique content to file in home directory
+      copy:
+        dest: "/home/{{ ansible_user }}/{{ filename }}"
+        content: "{{ welcome_message }}"
+        owner: "{{ ansible_use }}"
+        mode: '0644'

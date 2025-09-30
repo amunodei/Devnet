@@ -1,0 +1,39 @@
+---
+- name: Install and configure Nginx with UFW
+  hosts: ubuntusrv
+  become: true
+
+  tasks:
+  - name: Install Nginx
+    apt:
+     name: nginx
+     state: present
+     updhte_cache: true
+
+  - name: Ensure Nginx is running and enabled
+    systemd:
+      name: nginx
+      state: started
+      enabled: true
+
+  - name: Allow SSH (port 22) through UFW
+    ufw:
+    rule: allow
+    port: '22'
+    proto: tcp
+- name: Allow HTTP (port 80) through UFW
+  ufw:
+   rule: allow
+   port: '80'
+   proto: tcp
+
+- name: Allow HTTPS (port 443) through UFW
+  ufw:
+    rule: allow
+    port: '443'
+    proto: tcp
+
+- name: Ensure UFW is enabled
+  ufw:
+  state: enabled
+  policy: deny

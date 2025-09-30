@@ -4,6 +4,7 @@ conf t
 
 hostname CSR1
 
+crypto key generate rsa
 
 ip domain name devnet.com
 crypto key gen rsa mod 2048
